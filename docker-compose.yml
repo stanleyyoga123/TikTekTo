@@ -3,15 +3,15 @@ version: '3.5'
 services:
   backend:
     build:
-      context: ./backend
+      context: ./
       dockerfile: Dockerfile
     container_name: backend
     env_file:
-      - ./backend/.env
+      - ./.env
     ports:
       - "8080:8080"
     profiles: ["dev"]
-    
+
   etcd:
     container_name: milvus-etcd
     image: quay.io/coreos/etcd:v3.5.18

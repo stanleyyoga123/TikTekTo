@@ -1,9 +1,5 @@
 from pydantic import BaseModel
-from pydantic.functional_validators import field_validator
-
 from module.flashcard import FlashcardModule
-
-from common.config import CONFIG
 
 
 class FlashcardRequest(BaseModel):

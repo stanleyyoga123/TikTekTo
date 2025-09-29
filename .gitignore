@@ -210,3 +210,7 @@ __marimo__/
 adhoc
 data
 out
+.vscode
+notes.md
+*.ipynb
+volumes
