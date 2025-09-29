@@ -14,10 +14,6 @@ class GeneratePathwayRequest(BaseModel):
     objective: str
 
 
-class GetUserPathwayRequest(BaseModel):
-    username: str
-
-
 class UserPathwayControlller:
     def __init__(self):
         self._module = UserPathwayModule()
@@ -44,6 +40,7 @@ class UserPathwayControlller:
             "data": pathway,
         }
 
-    def get_user_pathway(self, body: GetUserPathwayRequest) -> dict:
-        data = self._collection.find_one({"username": body.username})
-        return data["pathway"]
+    def get_user_pathway(self, username: str) -> dict:
+        query = {"username": username}
+        data = self._collection.find_one(query)
+        return {"status": 200, "data": data["pathway"]}

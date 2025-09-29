@@ -27,3 +27,8 @@ app.add_api_route(
     question_controller.retrieve_questions,
     methods=["POST"],
 )
+app.add_api_route(
+    "/api/user/pathway/{username}",
+    pathway_controller.get_user_pathway,
+    methods=["GET"],
+)
