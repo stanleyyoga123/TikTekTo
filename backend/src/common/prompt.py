@@ -54,7 +54,7 @@ I want the flashcard to be concise, with maximum of 20 words for each element
 """
 
 CHECK_ANSWER_PROMPT = """
-Compare these 2 answers, are they same or not, if not give the explanation why
+Compare these 2 answers, are they same or not, if not give the explanation why. Try to make sure the points from the question is answered, it's fine eventhough the answer are not 100 percent complete (threshold at 80 percent covered)
 
 Question: {question}
 True answer: {true_answer}
@@ -70,4 +70,9 @@ Retun in JSON only response with these structure
 Field description:
     is_correct: true if it's correct, false if the other way
     reason: why the answer is false, answer with less than 30 words. If the answer is correct, just fill it with null
+"""
+
+HIGHLIGHT_ADDITIONAL_PROMPT = """
+I want you to highlight just the keypoints from the JSON response that has field type of str, by using <mark>
+Don't try to mark the entire response
 """

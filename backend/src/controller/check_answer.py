@@ -6,6 +6,7 @@ class CheckAnswerRequest(BaseModel):
     question: str
     true_answer: str
     user_answer: str
+    is_highlighted: bool
 
 
 class CheckAnswerControlller:
@@ -19,5 +20,6 @@ class CheckAnswerControlller:
                 body.question,
                 body.true_answer,
                 body.user_answer,
+                body.is_highlighted,
             ),
         }

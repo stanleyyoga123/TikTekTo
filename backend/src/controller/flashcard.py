@@ -10,6 +10,7 @@ class FlashcardRequest(BaseModel):
     num_flashcards: int
     general_idea: str
     topics: list[str]
+    is_highlighted: bool
 
 
 class FlashcardControlller:
@@ -23,5 +24,6 @@ class FlashcardControlller:
                 body.num_flashcards,
                 body.general_idea,
                 body.topics,
+                body.is_highlighted,
             ),
         }
