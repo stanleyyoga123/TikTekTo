@@ -19,11 +19,18 @@ app.add_api_route(
     flashcard_controller.create_flashcard,
     methods=["POST"],
 )
+
 app.add_api_route(
     "/api/user/pathway/create",
     pathway_controller.generate_pathway,
     methods=["POST"],
 )
+app.add_api_route(
+    "/api/user/pathway/create/document",
+    pathway_controller.generate_pathway_from_file,
+    methods=["POST"],
+)
+
 app.add_api_route(
     "/api/questions/retrieve",
     question_controller.retrieve_questions,

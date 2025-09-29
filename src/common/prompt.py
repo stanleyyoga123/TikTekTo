@@ -1,3 +1,29 @@
+USER_PATHWAY_DOCUMENT_PROMPT = """
+User info are attached in this document file
+
+Objective: learning {objective}
+
+Extract pathways with these conditions:
+1. Group in several milestones, with every milestone consists of several topics that I need to finish before continue to next milestone
+2. For each group, sort it with difficulty level ascending
+3. If the user already have similar experience with the topics in the milestone, skip it
+4. In general_idea, refrain from using this type of template (Milestone 1: ...), just focus on the general idea itself
+
+Answer it with this JSON format, no need other words
+```
+[
+    {{
+        "general_idea": str,
+        "topics": list[str]
+    }},
+    ...
+]
+```
+Field description:
+    general_idea: every element have maximum of 5 words 
+    topics: each element must be concise
+"""
+
 USER_PATHWAY_PROMPT = """
 Role: {role}
 Background: {background}
@@ -9,6 +35,8 @@ Objective: learning {objective}
 Extract pathways with these conditions:
 1. Group in several milestones, with every milestone consists of several topics that I need to finish before continue to next milestone
 2. For each group, sort it with difficulty level ascending
+3. If the user already have similar experience with the topics in the milestone, skip it
+4. In general_idea, refrain from using this type of template (Milestone 1: ...), just focus on the general idea itself
 
 Answer it with this JSON format, no need other words
 ```

@@ -30,7 +30,7 @@
 5. **Install dependencies**  
    Use the same dependencies as the backend service:
    ```bash
-   pip install -r backend/requirements.txt
+   pip install -r requirements.txt
    ```
 
 6. **Run the adhoc scripts (in order)**  

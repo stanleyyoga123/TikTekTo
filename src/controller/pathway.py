@@ -1,6 +1,8 @@
 from pydantic import BaseModel
 from pymongo import MongoClient
 
+from fastapi import UploadFile, File, Form
+
 from module.pathway import UserPathwayModule
 
 from common.config import CONFIG
@@ -31,6 +33,30 @@ class UserPathwayControlller:
             "background": body.background,
             "additional": body.additional,
             "objective": body.objective,
+            "pathway": pathway,
+        }
+        self._collection.insert_one(data)
+
+        return {
+            "status": 200,
+            "data": pathway,
+        }
+
+    def generate_pathway_from_file(
+        self,
+        username: str = Form(...),
+        role: str = Form(...),
+        objective: str = Form(...),
+        document: UploadFile = File(..., description="PDF document"),
+    ) -> dict:
+        file = document.file.read()
+        pathway = self._module.create_pathway_from_file(file, objective)
+        data = {
+            "username": username,
+            "role": None,
+            "background": None,
+            "additional": None,
+            "objective": objective,
             "pathway": pathway,
         }
         self._collection.insert_one(data)
