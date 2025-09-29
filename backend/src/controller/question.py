@@ -1,11 +1,21 @@
+from pydantic import BaseModel
 from module.question import QuestionModule
 
-from common.config import CONFIG
+
+class QuestionRequest(BaseModel):
+    general_idea: str
+    topics: list[str]
 
 
 class QuestionControlller:
     def __init__(self):
         self._module = QuestionModule()
 
-    def generate_pathway(self, general_idea: str, topics: list[str]) -> dict[str, any]:
-        return self._module.retrieve_questions(general_idea, topics)
+    def retrieve_questions(self, body: QuestionRequest) -> dict:
+        return {
+            "status": 200,
+            "data": self._module.retrieve_questions(
+                body.general_idea,
+                body.topics,
+            ),
+        }

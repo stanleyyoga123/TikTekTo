@@ -18,13 +18,7 @@ class QuestionModuleConfig(BaseModel):
     anns_field: str
     limit: int
     output_fields: list[str]
-
-    @field_validator("output_fields", mode="before")
-    @classmethod
-    def parse_output_fields(cls, v):
-        if isinstance(v, str):
-            return [el.strip() for el in v.split(",")]
-        return v
+    search_params: dict
 
 
 class UserPathwayController(BaseModel):
@@ -40,7 +34,8 @@ class Config(BaseSettings):
 
     model_config = SettingsConfigDict(
         env_file=".env",
-        env_nested_delimiter="__",
+        env_nested_delimiter=".",
+        extra="ignore",
     )
 
 

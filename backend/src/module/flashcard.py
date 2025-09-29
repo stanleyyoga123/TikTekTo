@@ -20,4 +20,5 @@ class FlashcardModule:
         response = self._client.models.generate_content(
             model=GENERATOR_MODEL, contents=content
         )
-        return parse_response_to_json(response.text)
+        out = parse_response_to_json(response.text)
+        return out

@@ -13,10 +13,10 @@ Extract pathways with these conditions:
 Answer it with this JSON format, no need other words
 ```
 [
-    {
+    {{
         "general_idea": str,
         "topics": list[str]
-    },
+    }},
     ...
 ]
 ```
@@ -43,8 +43,10 @@ Make me {num_flashcards} flashcards with these conditions
 Return in JSON only response with these structure
 ```
 [
-    str,
-    ...
+    {{
+        "question": str,
+        "answer": str
+    }}
 ]
 ```
 

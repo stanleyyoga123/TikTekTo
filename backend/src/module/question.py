@@ -22,7 +22,7 @@ class QuestionModule:
         self._collection = Collection(name=CONFIG.question_module.collection)
 
     def retrieve_questions(
-        self, general_idea: str, topics: list[str], limit: int
+        self, general_idea: str, topics: list[str]
     ) -> dict[str, any]:
         query = QUESTION_PROMPT.format(
             general_idea=general_idea,
@@ -33,9 +33,12 @@ class QuestionModule:
         )
         vector = response.embeddings[0].values
 
-        return self._collection.search(
+        out = self._collection.search(
             data=[vector],
             anns_field=CONFIG.question_module.anns_field,
+            param=CONFIG.question_module.search_params,
             limit=CONFIG.question_module.limit,
             output_fields=CONFIG.question_module.output_fields,
         )
+
+        return [question["entity"] for question in out[0][::-1]]
