@@ -45,7 +45,7 @@
 7. **Start the backend service**  
    Once the adhoc scripts finish, launch the backend with:
    ```bash
-   docker-compose up --profile dev --build --detach
+   docker-compose --profile dev up --build --detach
    ```
 
 ## Resources
