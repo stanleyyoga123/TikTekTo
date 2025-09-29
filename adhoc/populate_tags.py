@@ -16,7 +16,9 @@ Just answer with the tags with comma separated for each
 """
 
 MODEL = "gemini-2.5-flash"
-output = json.load(open(os.path.join("out", "tags.json")))
+output = []
+# NOTE: Uncomment this if you have checkpoint file
+# output = json.load(open(os.path.join("out", "tags.json")))
 
 
 path = os.path.join("data", "questions.csv")

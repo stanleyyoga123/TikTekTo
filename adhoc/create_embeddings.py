@@ -3,8 +3,11 @@ import pickle
 from google import genai
 import pandas as pd
 
-# out = {}
-out = pickle.load(open("out/embeddings.pkl", "rb"))
+out = {}
+
+# NOTE: uncomment this if you have checkpoint file
+# out = pickle.load(open("out/embeddings.pkl", "rb"))
+
 path = "out/data.csv"
 df = pd.read_csv(path, encoding="cp1252")
 
