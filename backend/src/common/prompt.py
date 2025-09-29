@@ -52,3 +52,22 @@ Return in JSON only response with these structure
 
 I want the flashcard to be concise, with maximum of 20 words for each element
 """
+
+CHECK_ANSWER_PROMPT = """
+Compare these 2 answers, are they same or not, if not give the explanation why
+
+Question: {question}
+True answer: {true_answer}
+User answer: {user_answer}
+
+Retun in JSON only response with these structure
+```
+{{
+    "is_correct": boolean,
+    "reason": str
+}}
+```
+Field description:
+    is_correct: true if it's correct, false if the other way
+    reason: why the answer is false, answer with less than 30 words. If the answer is correct, just fill it with null
+"""
