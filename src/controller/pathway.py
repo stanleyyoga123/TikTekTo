@@ -53,7 +53,7 @@ class UserPathwayControlller:
         pathway = self._module.create_pathway_from_file(file, objective)
         data = {
             "username": username,
-            "role": None,
+            "role": role,
             "background": None,
             "additional": None,
             "objective": objective,
